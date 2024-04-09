@@ -53,11 +53,10 @@ public class UsuariosController {
 
     //Yo COMO USUARIO, REQUIERO UN EDPOINT QUE ME DEVUELVA LA
     // LISTA DE USUARIOS QUE EXISTAN POR UN NOMBRE, PARA PODER IDENTIFICAR A LOS USUARIOS MEDIANTE SU NOMBRE.
-    @GetMapping("/listanombre/{nombres}")
-    public ResponseEntity<List<UsuariosEntity>> buscarPorNombre(@PathVariable String nombres) {
+    @GetMapping("/listanombre")
+    public ResponseEntity<List<UsuariosEntity>> buscarPorNombre(@RequestParam String nombres) {
         List<UsuariosEntity> usuariosEntity = usuariosService.findByName(nombres);
         return ResponseEntity.ok(usuariosEntity);
     }
-
 
 }
