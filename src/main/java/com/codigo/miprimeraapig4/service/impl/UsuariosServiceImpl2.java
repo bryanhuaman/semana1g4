@@ -31,5 +31,10 @@ public class UsuariosServiceImpl2 implements UsuariosService {
         return null;
     }
 
+    @Override
+    public List<UsuariosEntity> findByName(String nombre) {
+        return null;
+    }
+
 
 }

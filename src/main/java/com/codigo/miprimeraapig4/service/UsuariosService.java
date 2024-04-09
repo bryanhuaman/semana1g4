@@ -12,4 +12,6 @@ public interface UsuariosService {
     List<UsuariosEntity> getAllUsuarios();
 
     UsuariosEntity findById(Integer usuarioId);
+
+    List<UsuariosEntity> findByName(String nombre);
 }
