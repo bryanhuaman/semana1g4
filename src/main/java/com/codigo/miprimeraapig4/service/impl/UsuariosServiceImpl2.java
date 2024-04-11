@@ -36,5 +36,15 @@ public class UsuariosServiceImpl2 implements UsuariosService {
         return null;
     }
 
+    @Override
+    public UsuariosEntity updateUsuario(Long id, UsuariosEntity request) {
+        return null;
+    }
+
+    @Override
+    public UsuariosEntity deleteUsuario(Long id) {
+        return null;
+    }
+
 
 }

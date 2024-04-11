@@ -38,4 +38,41 @@ public class UsuariosServiceImpl implements UsuariosService {
     public List<UsuariosEntity> findByName(String nombre) {
         return usuariosRepository.findByNombres(nombre);
     }
+
+    @Override
+    public UsuariosEntity updateUsuario(Long id, UsuariosEntity request) {
+       //Primero valido que exista el usuario
+        boolean existe = usuariosRepository.existsById(id);
+        if(existe){
+            //recupero mi usuario
+            Optional usuario = usuariosRepository.findById(id);//Para ya no parsear(en la linea 52) se puede poner Optional<UsuarioEntity>
+
+            //setear datos a actualizar
+            //Actualizar
+            UsuariosEntity usuariosEntity = usuariosRepository.save(getUpdate((UsuariosEntity) usuario.get(), request));//Parsea el optional a UsuarioEntity
+
+            return usuariosEntity;
+        }
+        return null;
+    }
+    private UsuariosEntity getUpdate(UsuariosEntity update, UsuariosEntity request){
+        update.setNombres(request.getNombres());
+        update.setApellidos(request.getApellidos());
+        update.setEstado(request.getEstado());
+        return update;
+    }
+
+
+    @Override
+    public UsuariosEntity deleteUsuario(Long id) {
+        Optional<UsuariosEntity> usuario = usuariosRepository.findById(id);
+
+        if(usuario.isPresent()){
+            usuario.get().setEstado(0);
+            return usuariosRepository.save(usuario.get());
+        }
+
+
+        return null;
+    }
 }

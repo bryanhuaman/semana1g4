@@ -59,4 +59,16 @@ public class UsuariosController {
         return ResponseEntity.ok(usuariosEntity);
     }
 
+    @PutMapping("/updateusuario/{id}")
+    public ResponseEntity<UsuariosEntity> actualizar(@PathVariable Long id,@RequestBody UsuariosEntity entity) {
+        UsuariosEntity usuariosEntity = usuariosService.updateUsuario(id,entity);
+        return ResponseEntity.ok(usuariosEntity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<UsuariosEntity> delete(@PathVariable Long id) {
+        UsuariosEntity usuariosEntity = usuariosService.deleteUsuario(id);
+        return ResponseEntity.ok(usuariosEntity);
+    }
+
 }

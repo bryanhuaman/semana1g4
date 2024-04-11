@@ -14,4 +14,6 @@ public interface UsuariosService {
     UsuariosEntity findById(Integer usuarioId);
 
     List<UsuariosEntity> findByName(String nombre);
+    UsuariosEntity updateUsuario(Long id, UsuariosEntity request);
+    UsuariosEntity deleteUsuario(Long id);
 }
